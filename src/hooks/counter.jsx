@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import useDocumentTitle from "./useDocumentTitle";
 
 const Counter = props => {
   // useState(0)[0] ~ this.state.count
@@ -6,16 +7,7 @@ const Counter = props => {
   const [count, setCount] = useState(0);
   const [name, setName] = useState("Someone");
 
-  useEffect(() => {
-    // function is called every time the component is rendered
-    document.title = `${name} has clicked ${count} times!`;
-    return () => {
-      console.log("clean up");
-    };
-  });
-  // componentDidMount
-  // componentDidUpdate
-  // componentWillUnmount
+  useDocumentTitle(`${name} has clicked ${count} times!`);
 
   return (
     <React.Fragment>
